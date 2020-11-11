@@ -4,7 +4,7 @@
  Author      : Barracuda-marina
  Version     :
  Copyright   : GNU
- Description : Hello World in C, Ansi-style
+ Description : BRA conversion for DCS World in C, Ansi-style
  ============================================================================
  */
 
@@ -17,7 +17,7 @@ int interceptor_to_bullseye_course, bullseye_to_bandit_radial, bandit_altitude, 
 
 double interceptor_to_bullseye_distance, bandit_to_bullseye_distance, gamma_rad, beta_rad, cos_gamma_rad, cos_beta_rad, beta_deg, alfa_deg, distance_to_bandit, interceptor_to_bandit_course;
 
-// Data input with validation
+/* Data input with validation module */
 
 int input_block() {
 
@@ -42,7 +42,7 @@ int input_block() {
 
 	printf("BullsEye radial to Bandit (0-360 degree): ");
 	scanf("%i", &bullseye_to_bandit_radial);
-    while ((bullseye_to_bandit_radial < 0) || (bullseye_to_bandit_radial > 360))
+    	while ((bullseye_to_bandit_radial < 0) || (bullseye_to_bandit_radial > 360))
 	{
             printf("Not correct, try again: ");
             scanf("%i", &bullseye_to_bandit_radial);
@@ -65,10 +65,10 @@ int input_block() {
         }
 
 	printf("Correct. Accepted...\n");
-		return 0;
+	return 0;
 }
 
-// Radian to degree conversion
+/* Radian to degree conversion function */ 
 
 double rad_to_grad (double rda) {
 	double pi, gr;
@@ -79,7 +79,7 @@ double rad_to_grad (double rda) {
 	return (gr);
 }
 
-// Degree to Radian conversion
+/* Degree to Radian conversion function */
 
 double grad_to_rad (double gra) {
 	double pi, rd;
@@ -90,10 +90,11 @@ double grad_to_rad (double gra) {
 	return (rd);
 }
 
+/* Main mathematic module */
 
 int mathematic_block()	{
 
-// Interceptor Radial
+/* Interceptor Radial counting */
 
 	if 	((interceptor_to_bullseye_course >= 0) && (interceptor_to_bullseye_course <= 179))	{
 	bullseye_to_interceptor_radial = (interceptor_to_bullseye_course + 200 - 20);
@@ -104,7 +105,7 @@ int mathematic_block()	{
 	bullseye_to_interceptor_radial = (interceptor_to_bullseye_course - 200 + 20);
 	}
 
-// Angle between Interceptor and Bandit
+/* Angle between Interceptor and Bandit counting */
 
 	gamma_deg = abs(bullseye_to_bandit_radial - bullseye_to_interceptor_radial);
 
@@ -116,14 +117,14 @@ int mathematic_block()	{
 		gamma_deg = 179;
 	}
 
-// Distance from Interceptor to Bandit
+/* Distance from Interceptor to Bandit counting */
 
 	gamma_rad = grad_to_rad(gamma_deg);
 	cos_gamma_rad = cos(gamma_rad);
 
 	distance_to_bandit = sqrt(bandit_to_bullseye_distance*bandit_to_bullseye_distance + interceptor_to_bullseye_distance*interceptor_to_bullseye_distance - 2*bandit_to_bullseye_distance*interceptor_to_bullseye_distance*cos_gamma_rad);
 
-// All angles
+/* All angles counting */
 
 	cos_beta_rad = (distance_to_bandit*distance_to_bandit + bandit_to_bullseye_distance*bandit_to_bullseye_distance - interceptor_to_bullseye_distance*interceptor_to_bullseye_distance)/(2*distance_to_bandit*bandit_to_bullseye_distance);
 
@@ -131,7 +132,7 @@ int mathematic_block()	{
 	beta_deg = rad_to_grad(beta_rad);
 	alfa_deg = 180.0 - (gamma_deg + beta_deg);
 
-// Bandit azimuth
+/* Bandit azimuth counting */
 
 	if (bullseye_to_bandit_radial >= interceptor_to_bullseye_course) {
 
@@ -147,7 +148,7 @@ int mathematic_block()	{
 }
 
 
-// Debug block
+/* Debug module */
 
 int debug_block() {
 
@@ -168,7 +169,7 @@ int debug_block() {
 	return 0;
 }
 
-// Data output
+/* Data output module */
 
 int output_block() {
 
@@ -182,8 +183,6 @@ int output_block() {
 	printf("Dismissed!\n");
 		return 0;
 }
-
-// Clear screen
 
 int main() {
 
@@ -203,4 +202,3 @@ int main() {
     }
 	return EXIT_SUCCESS;
 }
-
