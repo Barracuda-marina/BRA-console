@@ -90,7 +90,7 @@ double grad_to_rad (double gra) {
 	return (rd);
 }
 
-/* Main mathematic module */
+/* Main mathematics module */
 
 int mathematic_block()	{
 
