@@ -190,7 +190,7 @@ int main() {
     char cc;
 
     cc = 'c';
-    system("cls");
+    system("clear");
     while ((cc == 'c')||(cc == 'C')) {
 
         input_block();
@@ -199,7 +199,7 @@ int main() {
         output_block();
         printf("Press <C>+<Enter> to continue or only <Enter> to exit...");
         getchar();cc = getchar();
-        system("cls");
+        system("clear");
     }
 	return EXIT_SUCCESS;
 }
