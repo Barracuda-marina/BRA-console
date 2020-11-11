@@ -1,4 +1,4 @@
-# BRA underground and algorithm
+# BRA underground and algorithm for DCS World
 
 
 	Расчет потребного курса на цель и удаления до цели по данным AWACS "Referense Point" и "Bogey Doop"
