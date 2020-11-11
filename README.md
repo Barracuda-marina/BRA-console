@@ -3,7 +3,7 @@
 
 	Расчет потребного курса на цель и удаления до цели по данным AWACS "Referense Point" и "Bogey Doop"
 
-																Ol V Coastas "Barracuda_marina". 2020
+																Ol V Coastas aka "Barracuda_marina". 2020
 
 
 	Актуальность программы: На перехватчиках 1-3 поколений при получении от AWACS или наземных средств
